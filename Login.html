@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onlayn Magazin</title>
+    <link rel="stylesheet" href="Login.css">
+</head>
+
+<body>
+    <!-- LOGIN QISMI -->
+    <div id="login-page" class="container">
+        <h1>Login</h1>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <!-- MAGAZIN QISMI -->
+    <div id="shop-page" style="display: none;">
+        <header>
+            <h1 class="shop-title">🛍️ Electro TJ</h1>
+            <nav>
+                <div class="cart" id="cart-icon">
+                    <span id="cart-count">0</span> 🛍️
+                </div>
+                <select id="language-switcher">
+                    <option value="uz" selected>🇺🇿 O‘zbekcha</option>
+                    <option value="ru">🇷🇺 Русский</option>
+                    <option value="en">🇬🇧 English</option>
+                </select>
+                <button id="logout">Chiqish</button>
+            </nav>
+        </header>
+
+        <div class="categories">
+            <button class="category-btn active" data-category="all">Barcha</button>
+            <button class="category-btn" data-category="telefon">Telefon</button>
+            <button class="category-btn" data-category="kompyuter">Kompyuter</button>
+            <button class="category-btn" data-category="aksessuar">Aksessuar</button>
+        </div>
+
+        <main class="product-container" id="product-list"></main>
+
+        <footer class="site-footer">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h4>Biz haqimizda</h4>
+                    <p>Onlayn Magazin sizga eng yaxshi mahsulotlarni taklif etadi.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Manzil</h4>
+                    <p>Toshkent, O‘zbekiston</p>
+                    <p>Email: info@onlayn‑magazin.uz</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Foydali havolalar</h4>
+                    <ul>
+                        <li><a href="#">Bosh sahifa</a></li>
+                        <li><a href="#">Mahsulotlar</a></li>
+                        <li><a href="tel:+998901234567">Kontakt</a> +998 90 123 45 67</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Onlayn Magazin. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- CART MODAL -->
+    <div id="cart-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="close-cart" class="close">&times;</span>
+            <h2>Savatdagi mahsulotlar</h2>
+            <ul id="cart-items"></ul>
+            <div class="cart-total">
+                <strong>Jami:</strong> <span id="total-price">0 so‘m</span>
+            </div>
+            <div class="cart-buttons">
+                <button id="checkout-btn">📝 Zakaz berish</button>
+                <button id="clear-cart">🗑️ Savatni tozalash</button>
+            </div>
+
+            <!-- CHECKOUT FORMA -->
+            <div id="checkout-form" style="display: none;">
+                <h3>Buyurtma ma'lumotlari</h3>
+
+                <label for="fullname">Ism va familiya:</label>
+                <input type="text" id="fullname" required>
+
+                <label for="email">Email (Gmail):</label>
+                <input type="email" id="email" required>
+
+                <label for="phone">Telefon raqam:</label>
+                <input type="tel" id="phone" required pattern="[0-9]{9,15}" placeholder="998901234567">
+
+                <div class="row">
+                    <div>
+                        <label for="country">Respublika / Davlat:</label>
+                        <input type="text" id="country" required>
+                    </div>
+                    <div>
+                        <label for="city">Shahar / Tuman:</label>
+                        <input type="text" id="city" required>
+                    </div>
+                </div>
+
+                <label for="address">Manzil (ko‘cha, uy raqami):</label>
+                <input type="text" id="address" required>
+
+                <button id="order-btn">📝 Zakazni tasdiqlash</button>
+            </div>
+
+            <p id="order-message" style="color:green; font-weight:bold; display:none;">
+                Buyurtmangiz qabul qilindi ✅
+            </p>
+        </div>
+    </div>
+
+    <!-- MAHSULOT TAVSIFI MODALI -->
+    <div id="product-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span id="close-product" class="close">&times;</span>
+            <h2 id="product-name"></h2>
+            <img id="product-image" src="" alt="Mahsulot rasmi" style="max-width:200px; display:block; margin:auto;">
+            <p id="product-description"></p>
+            <p><strong id="productpricelabel">Narxi:</strong> <span id="product-price"></span></p>
+        </div>
+    </div>
+
+
+    <script src="languages.js"></script>
+    <script src="Login.js"></script>
+</body>
+
+</html>
